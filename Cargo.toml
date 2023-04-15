@@ -1,6 +1,7 @@
 [package]
 name = "mblocks"
 version = "0.1.0"
+authors = ["mhdy <https://gitlab.com/mhdy>"]
 edition = "2021"
 
 [dependencies]
