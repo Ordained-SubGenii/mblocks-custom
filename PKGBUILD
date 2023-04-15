@@ -1,13 +1,13 @@
 # Maintainer: mhdy <https://gitlab.com/mhdy>
 pkgname=mblocks
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="multithreated, async statusbar for dwm and likes, written in Rust"
 makedepends=('rust' 'cargo' 'git')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/Ordained-SubGenii/mblocks-custom"
 license=('MIT')
-source=("git+$url")
+source=("git+$url#branch=maiin")
 sha256sums=('SKIP')
 # Generated in accordance to https://wiki.archlinux.org/title/Rust_package_guidelines.
 # Might require further modification depending on the package involved.
