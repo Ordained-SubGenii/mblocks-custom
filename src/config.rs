@@ -6,7 +6,7 @@ use crate::block::CommandType::{Function, Shell};
 
 use crate::blocks::cpu::cpu_usage;
 use crate::blocks::datetime::current_time;
-use crate::blocks::memory::memory_usage;
+//use crate::blocks::memory::memory_usage;
 
 pub const SEPARATOR: &str = " | ";
 pub const PREFIX: &str = " ";
@@ -14,15 +14,27 @@ pub const SUFFIX: &str = " ";
 
 pub const BLOCKS: &[Block] = &[
     Block {
+        kind: Interval(30),
+        command: Shell(&["cat", "/sys/class/net/wlan0/operstate"]),
+        prefix: "Wifi: ",
+        suffix: "",
+    },
+    Block {
         kind: Interval(1),
         command: Function(cpu_usage),
         prefix: "CPU: ",
         suffix: "%",
     },
+    //Block {
+    //    kind: Interval(1),
+    //    command: Function(memory_usage),
+    //    prefix: "MEM: ",
+    //    suffix: "",
+    //},
     Block {
-        kind: Interval(1),
-        command: Function(memory_usage),
-        prefix: "MEM: ",
+        kind: Signal(5),
+        command: Shell(&["wpctl", "get-volume", "@DEFAULT_SINK@"]),
+        prefix: "",
         suffix: "",
     },
     Block {
@@ -43,4 +55,10 @@ pub const BLOCKS: &[Block] = &[
         prefix: "",
         suffix: "",
     },
+    //Block {
+    //    kind: Once,
+    //    command: Shell(&["dwm", "-v"]),
+    //    prefix: "",
+    //    suffix: "",
+    //},
 ];
