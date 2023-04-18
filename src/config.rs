@@ -5,7 +5,7 @@ use crate::block::BlockType::{Once, Periodic, Signal, PeriodicOrSignal};
 use crate::block::CommandType::{Function, Shell};
 
 use crate::blocks::cpu::cpu_usage;
-use crate::blocks::datetime::current_time;
+use crate::blocks::datetime::{current_time, current_date};
 //use crate::blocks::memory::memory_usage;
 
 pub const SEPARATOR: &str = " | ";
@@ -38,8 +38,8 @@ pub const BLOCKS: &[Block] = &[
         suffix: "",
     },    
     Block {
-        kind: PeriodicOrSignal(5, 1),
-        command: Shell(&["date", "+%a, %b %d %Y"]),
+        kind: Periodic(60),
+        command: Function(current_date),
         prefix: "",
         suffix: "",
     },
